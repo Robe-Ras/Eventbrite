@@ -1,2 +1,28 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="card my-5 bg-transparent text-white">
+  <div class="card-body">
+    <h1 class="card-title text-purple">Profil de <%= @user.first_name %> <%= @user.last_name %></h1>
+    <p class="card-text">Prénom : <%= @user.first_name %></p>
+    <p class="card-text">Nom de famille : <%= @user.last_name %></p>
+    <p class="card-text">Description : <%= @user.description %></p>
+    <p class="card-text">E-mail : <%= @user.email %></p>
+
+    <h2 class="card-title text-purple mt-4 mb-3">Événements créés par <%= @user.first_name %></h2>
+    <ul class="list-group bg-transparent mb-4">
+      <% Event.all.each do |event| %>
+        <% if current_user.id == event.admin_id %>
+          <li class="list-group-item bg-transparent"><%= link_to event.title, event_path(event), class: "text-white" %></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <% if current_user == @user %>
+      <p><%= link_to "Éditer l'e-mail", edit_user_registration_path, class: "btn btn-outline-light btn-purple" %></p>
+      <p><%= link_to "Éditer le mot de passe", edit_user_registration_path, class: "btn btn-outline-light btn-purple" %></p>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+

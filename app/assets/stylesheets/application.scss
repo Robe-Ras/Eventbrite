@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+ .text-purple {
+  color: rgb(115, 0, 255);
+}
+
+.btn-purple {
+  color: rgb(255, 0, 255);
+  border-color: rgb(255, 0, 255);
+}
+
+.btn-purple:hover {
+  background-color: rgb(115, 0, 255);
+}
+
+
+
+ 
+
+ /* card */
+
+

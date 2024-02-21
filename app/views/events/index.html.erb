@@ -1,45 +1,45 @@
 <!-- Jumbotron -->
-<div class="p-5 text-center bg-image rounded-3" style="
-    background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
-    height: 400px;
-  ">
-  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-    <div class="d-flex justify-content-center align-items-center h-100">
-      <div class="text-white">
-        <h1 class="mb-3">Heading</h1>
-        <h4 class="mb-3">Subheading</h4>
-        <a class="btn btn-outline-light btn-lg" href="<%= new_event_path %>" role="button">Créer un event</a>
-      </div>
+<div class="p-5 text-center bg-image rounded-3 position-relative mb-0 border border-black" style="background-image: url('https://img.freepik.com/vecteurs-libre/illustration-mur-brique-noire-nuit-grunge-texture-facade-pierre-vierge_575670-269.jpg?w=1060&t=st=1708492359~exp=1708492959~hmac=fa9630313160d45973da01edc726a4e808a4b0bbd0e35ccf90197b4f0ca591d2'); height: 400px; width: 100%;">
+  <div class="d-flex justify-content-center align-items-center position-relative h-100">
+    <div class="text-white">
+      <h1 class="mb-3 text-purple">Crée l'évènement de l'année !</h1>
+      <h5 class="mb-3 text-purple">Celui qui restera gravé dans nos mémoires</h5>
+      <a class="btn btn-outline-light btn-lg btn-purple" href="<%= new_event_path %>" role="button">READY</a>
     </div>
   </div>
 </div>
 <!-- Jumbotron -->
+
 <div class="container py-5">
   <div class="row justify-content-center">
     <% @events.sort_by{|e| - e.id}.each do |event| %>
       <div class="col-md-4">
-        <!-- Début de l'élément avec les vagues et l'icône -->
-        <div class="card box-shadow mx-auto my-5" style="width: 18rem;">
+        <div class="card box-shadow mx-auto my-5 bg-dark text-white" style="width: 18rem;">
           <!-- Image aléatoire -->
-          
+          <% image_url = Faker::LoremFlickr.image(size: "300x200", search_terms: ['concert']) %>
+          <img src="<%= image_url %>" class="card-img-top" alt="Image aléatoire">
           <div class="card-body">
-            <!-- Titre du gossip -->
-            <h5 class="card-title"><%= event.title %></h5>
+            <!-- Titre de l event -->
+            <h5 class="card-title text-purple"><%= event.title %></h5>
             <hr>
-            <!-- Auteur du gossip -->
+            <!-- Auteur de l event -->
             <% if event.admin %>
               <p class="card-text">Par : <%= event.admin.first_name %></p>
             <% else %>
               <p class="card-text">Par : Anonyme</p>
             <% end %>
-            <!-- Contenu du gossip -->
+            <!-- Contenu de l event -->
             <p class="card-text"><%= event.description %></p>
             <!-- Bouton Voir plus -->
-            <%= link_to "Voir plus", event_path(event), class: "btn btn-primary" %>
+            <%= link_to "Voir plus", event_path(event), class: "btn btn-outline-light btn-lg btn-purple" %>
           </div>
         </div>
-        <!-- Fin de l'élément avec les vagues et l'icône -->
       </div>
     <% end %>
   </div>
 </div>
+
+
+
+
+

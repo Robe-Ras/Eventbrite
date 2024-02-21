@@ -12,7 +12,7 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now
   end
 
-  # Définir une méthode pour obtenir le nom complet de l'utilisateur
+  # nom complet de l'utilisateur
   def full_name
     "#{first_name} #{last_name}"
   end

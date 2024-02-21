@@ -5,6 +5,11 @@ gem 'dotenv-rails'
 gem 'table_print'
 gem 'faker'
 gem 'devise'
+gem 'bootstrap'
+
+gem 'sassc-rails'
+#gem 'dartsass-sprockets'
+gem 'jquery-rails'
 
 
 

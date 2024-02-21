@@ -16,7 +16,7 @@ require 'faker'
 Faker::Config.locale = 'fr'
 Faker::UniqueGenerator.clear
 
-# Création des utilisateurs
+# utilisateurs
 10.times do 
   user = User.create(
     first_name: Faker::Name.first_name,
@@ -28,7 +28,7 @@ Faker::UniqueGenerator.clear
 end
 puts "user crée"
 
-# Création des événements
+# événements
 
 5.times do
   
@@ -45,13 +45,32 @@ puts "user crée"
 end
 puts "5 event crée"
 
-# Création de participations aléatoires
+#  participations aléatoires
 all_events = Event.all
 5.times do 
   user = User.all.sample
   event = Event.all.sample
   attendance = Attendance.create(stripe_customer_id: "123456", user: user, event: event)
 end
+
+
+#  URL d'image aléatoire
+def generate_random_image_url(category)
+  Faker::LoremFlickr.image(size: "300x200", search_terms: [category])
+end
+
+
+# événements avec des images aléatoires de la catégorie "concert"
+10.times do
+  Event.create(
+    title: Faker::Lorem.sentence,
+    description: Faker::LoremFlickr.image(size: "300x200", search_terms: ['concert']) # Utilisation de Faker::LoremFlickr pour générer l'URL de l'image
+    # Ajoutez d'autres attributs selon vos besoins
+  )
+end
+
+
+
 
 puts "Seed completed successfully!"
 
